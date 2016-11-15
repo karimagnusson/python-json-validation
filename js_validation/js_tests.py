@@ -1,5 +1,4 @@
 from js_types import JsError
-from django.core.validators import validate_email
 
 
 def max_length(limit):
@@ -54,15 +53,5 @@ def has_length(value):
         raise JsError('empty')
 
 
-def email(value):
-    try:
-        validate_email(value)
-    except:
-        raise JsError('invalid')
-
-
-def optional_email(value):
-    if len(value):
-        email(value)
 
 
