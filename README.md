@@ -1,8 +1,9 @@
 ## Python JSON Validation
 
-
+This program offers a model for validating JSON. The Original use case was to make sense of large amount of objects from MongoDb.
 
 #### Example 1
+Create a model with the same sturcture as the object.
 ```python
 from js_validation.js_types import *
 
@@ -40,6 +41,7 @@ except JsError, inst:
 ```
 
 #### Example 2
+Validating a deep object.
 ```python
 from js_validation.js_types import *
 
@@ -78,8 +80,8 @@ except JsError, inst:
     print inst.json
 ```
 
-
 #### Example 3
+Other features.
 ```python
 import json
 from js_validation.js_types import *
