@@ -8,7 +8,7 @@ class JsError(Exception):
 
 class JsValue(object):
     
-    python_type = (str, unicode, int, long, float, bool, list, dict, None,)
+    python_type = (str, unicode, int, long, float, bool, list, dict,)
 
     def __init__(self, **kwargs):
         self.tests = []
@@ -44,7 +44,10 @@ class JsValue(object):
 
 
     def validate(self, value):
-        if self.may_be_null and value is None:
+        if value is None and self.default_value is not None:
+            return self.default_value
+
+        if value is None and self.may_be_null:
             return None
 
         for fix in self.fixes:
@@ -82,11 +85,6 @@ class JsFloat(JsValue):
 class JsBool(JsValue):
     
     python_type = bool
-
-
-class JsNull(JsValue):
-    
-    python_type = None
 
 
 class JsArray(JsValue):
